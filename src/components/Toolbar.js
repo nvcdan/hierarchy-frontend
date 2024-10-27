@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { FaPlusCircle } from 'react-icons/fa';
+import { FaPlusCircle, FaSignOutAlt } from 'react-icons/fa';
 import './Toolbar.css';
 
-const Toolbar = ({ onAddNode, onSearchSubmit }) => {
+const Toolbar = ({ onAddNode, onSearchSubmit, onLogout }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (e) => {
@@ -28,6 +28,9 @@ const Toolbar = ({ onAddNode, onSearchSubmit }) => {
       />
       <button onClick={onAddNode} className="add-node-button">
       <FaPlusCircle />
+      </button>
+      <button onClick={onLogout} className="logout-button">
+        <FaSignOutAlt />
       </button>
     </div>
   );
