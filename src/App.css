@@ -10,3 +10,44 @@
   .reactflow-wrapper {
     flex: 1;
   }
+
+  .legend {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-size: 12px;
+    width: 150px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .color-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-right: 8px;
+  }
+  
+  .color-box.approved {
+    background-color: #709f7b;
+  }
+  
+  .color-box.not-approved {
+    background-color: #aa5059;
+  }
+  
+  .color-box.deleted {
+    background-color: #ffcccc;
+  }
+  
+  .color-box.inactive {
+    background-color: #d3d3d3;
+  }

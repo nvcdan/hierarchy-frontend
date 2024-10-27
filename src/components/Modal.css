@@ -11,7 +11,7 @@
   }
   
   .modal {
-    background: white;
+    background: rgba(255,255,255,0.95);
     padding: 20px;
     width: 400px;
     max-width: 90%;
@@ -48,8 +48,14 @@
   }
   
   .modal-buttons button {
-    margin-left: 10px;
+    margin-right: 10px;
     cursor: pointer;
+    background-color: var(--main);
+    color: white;
+    border-radius: 20px;
+    width: 70px;
+    padding: 5px 10px;
+    border: none;
   }
   
   .cancel-button {

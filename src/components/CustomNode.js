@@ -10,7 +10,7 @@ const CustomNode = ({ data }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const nodeClassName = `custom-node ${data.isDeleted ? 'deleted' : ''} ${
     !data.isActive ? 'inactive' : ''
-  }`;
+  } ${data.isApproved ? 'approved' : 'not-approved'}`;
 
   const handleAddChild = () => setShowAddModal(true);
   const handleCloseAddModal = () => setShowAddModal(false);
@@ -21,7 +21,12 @@ const CustomNode = ({ data }) => {
   return (
     <>
       <div className={nodeClassName}>
-        <div className="node-label">{data.label}</div>
+      <span className={`approval-badge ${data.isApproved ? 'approved' : 'not-approved'}`}>
+          {data.isApproved ? '✔' : '✖'}
+        </span>
+      <div className="node-label">
+        {data.label}
+      </div>
         <div className="node-buttons">
           <button onClick={handleEditNode} title="Edit">
             <FaEdit />

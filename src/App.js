@@ -20,6 +20,23 @@ const nodeTypes = {
 const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 
+const Legend = () => (
+  <div className="legend">
+    <div className="legend-item">
+      <span className="color-box approved"></span> Approved
+    </div>
+    <div className="legend-item">
+      <span className="color-box not-approved"></span> Not Approved
+    </div>
+    <div className="legend-item">
+      <span className="color-box deleted"></span> Deleted
+    </div>
+    <div className="legend-item">
+      <span className="color-box inactive"></span> Inactive
+    </div>
+  </div>
+);
+
 function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
@@ -40,14 +57,15 @@ function App() {
         toast.success(`Department "${name}" added successfully`);
         triggerReload();
       } catch (error) {
-        console.error('Error adding department:', error);
-        toast.error('Failed to add department');
+        const errorMessage = error.response?.data?.error?.message || 'Failed to add department';
+        console.error('Error adding department:', errorMessage);
+        toast.error(`Failed to add department: ${errorMessage}`);
       }
     },
     [token]
   );
 
-  const handleEdit= useCallback(
+  const handleEdit = useCallback(
     async ({ id, parent_id, name, flags }) => {
       try {
         const payload = { id, parent_id, name, flags };
@@ -57,8 +75,9 @@ function App() {
         toast.success(`Node "${name}" updated successfully`);
         triggerReload(); 
       } catch (error) {
-        console.error('Error updating node:', error);
-        toast.error('Failed to update node');
+        const errorMessage = error.response?.data?.error?.message || 'Failed to update node';
+        console.error('Error updating node:', errorMessage);
+        toast.error(`Failed to update node: ${errorMessage}`);
       }
     },
     [token]
@@ -73,8 +92,9 @@ function App() {
       toast.success(`Node ${id} deleted successfully`);
       triggerReload();
     } catch (error) {
-      console.error(`Error deleting node ${id}:`, error);
-      toast.error(`Failed to delete node ${id}`);
+      const errorMessage = error.response?.data?.error?.message || `Failed to delete node ${id}`;
+      console.error(`Error deleting node ${id}:`, errorMessage);
+      toast.error(`Failed to delete node ${id}: ${errorMessage}`);
     }
   }, [token]);
 
@@ -88,8 +108,9 @@ function App() {
         toast.success(`Child department "${name}" added successfully`);
         triggerReload();
       } catch (error) {
-        console.error('Error adding child department:', error);
-        toast.error('Failed to add child department');
+        const errorMessage = error.response?.data?.error?.message || 'Failed to add child department';
+        console.error('Error adding child department:', errorMessage);
+        toast.error(`Failed to add child department: ${errorMessage}`);
       }
     },
     [token]
@@ -125,10 +146,11 @@ function App() {
       setNodes(layoutedElements.nodes);
       setEdges(layoutedElements.edges);
     } catch (error) {
+      const errorMessage = error.response?.data?.error?.message || 'Failed to load data from backend';
       if (error.response && error.response.status === 404) {
-        toast.error('No results found for your search.');
+        toast.error(`No results found for your search: ${errorMessage}`);
       } else {
-        toast.error('Failed to load data from backend');
+        toast.error(errorMessage);
       }
     }
   }, [searchQuery, token, handleEdit, handleDelete, handleAddChild]);
@@ -168,6 +190,7 @@ function App() {
           onAddNode={handleAddNodeSubmit}
         />
       )}
+       <Legend />
     </div>
   );
 }

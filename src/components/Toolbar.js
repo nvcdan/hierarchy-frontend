@@ -20,7 +20,7 @@ const Toolbar = ({ onAddNode, onSearchSubmit }) => {
       <img src="/logo.svg" alt="Logo" className="toolbar-logo" width={80} height={80} />
       <input
         type="text"
-        placeholder="Search node..."
+        placeholder="Cautǎ ierarhia..."
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
