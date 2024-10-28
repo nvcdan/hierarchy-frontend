@@ -36,11 +36,11 @@ This React application provides an intuitive interface for managing hierarchical
 
 ## Application Screenshots
 
-### Main Dashboard
+### Login Dashboard
 ![Login](https://i.imgur.com/NlSAjOQ.png)
 
 ### Node Editing Interface
-![Node Editing Interface](https://i.imgur.com/DO7f0Es.png)
+![Node Editing Interface](https://i.imgur.com/iiFhLI9.png)
 
 
 ## Setup

@@ -1,7 +1,7 @@
 import dagre from 'dagre';
 
 const nodeWidth = 150;
-const nodeHeight = 50;
+const nodeHeight = 100;
 
 export const processData = (data, handleEdit, handleDelete, handleAddChild) => {
     const nodes = [];
@@ -30,7 +30,8 @@ export const processData = (data, handleEdit, handleDelete, handleAddChild) => {
           id: `e${parentId}-${item.id}`,
           source: parentId.toString(),
           target: item.id.toString(),
-          animated: false,
+          animated: true,
+          type: 'step'
         });
       }
   
