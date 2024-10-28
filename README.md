@@ -34,6 +34,15 @@ This React application provides an intuitive interface for managing hierarchical
 └── package.json              # Dependencies and scripts
 ```
 
+## Application Screenshots
+
+### Main Dashboard
+![Login](https://i.imgur.com/NlSAjOQ.png)
+
+### Node Editing Interface
+![Node Editing Interface](https://i.imgur.com/DO7f0Es.png)
+
+
 ## Setup
 
 ### 1. Clone the Repository

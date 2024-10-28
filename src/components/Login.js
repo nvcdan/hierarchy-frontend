@@ -18,22 +18,21 @@ function Login({ onLogin }) {
       const { token } = response.data.data;
       localStorage.setItem('token', token);
       onLogin();
-      toast.success('Login successful!'); // Toast de succes
+      toast.success('Login successful!'); 
     } catch (error) {
       const errorMessage = error.response?.data?.error?.message || 'Login failed';
-      console.error('Login error:', errorMessage);
-      toast.error(`Login failed: ${errorMessage}`); // Toast de eroare
+      toast.error(`Login failed: ${errorMessage}`); 
     }
   };
 
   return (
     <div className="login-container">
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <img src="/logoLight.svg" alt="Logo" className="login-logo" width={200} height={200} />
-      <h2>Autentificare</h2>
+      <h2>Authentication</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Utilizator:</label>
+          <label>Username:</label>
           <input
             type="text"
             value={username}
@@ -42,7 +41,7 @@ function Login({ onLogin }) {
           />
         </div>
         <div>
-          <label>Parola:</label>
+          <label>Password:</label>
           <input
             type="password"
             value={password}

@@ -86,7 +86,6 @@ function App() {
         triggerReload();
       } catch (error) {
         const errorMessage = error.response?.data?.error?.message || 'Failed to add department';
-        console.error('Error adding department:', errorMessage);
         toast.error(`Failed to add department: ${errorMessage}`);
       }
     },
@@ -102,7 +101,6 @@ function App() {
         triggerReload(); 
       } catch (error) {
         const errorMessage = error.response?.data?.error?.message || 'Failed to update node';
-        console.error('Error updating node:', errorMessage);
         toast.error(`Failed to update node: ${errorMessage}`);
       }
     },
@@ -116,7 +114,6 @@ function App() {
       triggerReload();
     } catch (error) {
       const errorMessage = error.response?.data?.error?.message || `Failed to delete node ${id}`;
-      console.error(`Error deleting node ${id}:`, errorMessage);
       toast.error(`Failed to delete node ${id}: ${errorMessage}`);
     }
   }, [axiosInstance, triggerReload]);
@@ -130,7 +127,7 @@ function App() {
         triggerReload();
       } catch (error) {
         const errorMessage = error.response?.data?.error?.message || 'Failed to add child department';
-        console.error('Error adding child department:', errorMessage);
+
         toast.error(`Failed to add child department: ${errorMessage}`);
       }
     },
